@@ -4,6 +4,8 @@ import "./CRUD.css";
 function CRUD() {
     const [selectedRow, setSelectedRow] = useState(undefined);
     const [rows, setRows] = useState([]);
+    const [draggedRowIndex, setDraggedRowIndex] = useState(null);
+    const [dropRowIndex, setDropRowIndex] = useState(null);
     const inputEl = useRef(null);
 
     useEffect(() => {
@@ -17,11 +19,6 @@ function CRUD() {
         setRows(newRows);
         localStorage.setItem('tarefas', JSON.stringify(newRows));
         inputEl.current.value = "";
-    };
-
-    const selectRow = (index) => {
-        setSelectedRow(index);
-        inputEl.current.value = rows[index];
     };
 
     const editRow = () => {
@@ -42,7 +39,30 @@ function CRUD() {
                 localStorage.setItem('tarefas', JSON.stringify(newRows));
             }
         }
-    }
+    };
+
+    // Drag and drop handlers
+    const handleDragStart = (event, index) => {
+        setDraggedRowIndex(index);
+    };
+    const handleDragOver = (event, index) => {
+        event.preventDefault();
+        setDropRowIndex(index);
+    };
+    const handleDrop = (event) => {
+        event.preventDefault();
+        // Perform swap
+        if (draggedRowIndex !== null && dropRowIndex !== null) {
+            const updatedRows = [...rows];
+            updatedRows[draggedRowIndex] = rows[dropRowIndex];
+            updatedRows[dropRowIndex] = rows[draggedRowIndex];
+            setRows(updatedRows);
+            localStorage.setItem('tarefas', JSON.stringify(updatedRows));
+        }
+        // Clear indices
+        setDraggedRowIndex(null);
+        setDropRowIndex(null);
+    };
 
     return (
         <div>
@@ -63,7 +83,11 @@ function CRUD() {
                 {rows.map((row, index) => (
                     <tr
                         key={index}
-                        onClick={() => selectRow(index)}
+                        draggable="true"
+                        onDragStart={(event) => handleDragStart(event, index)}
+                        onDragOver={(event) => handleDragOver(event, index)}
+                        onDrop={handleDrop}
+                        onMouseDown={() => setSelectedRow(index)}
                         className={index === selectedRow ? "selected" : ""}
                     >
                         <td>{row}</td>
