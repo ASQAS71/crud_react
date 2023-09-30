@@ -1,0 +1,114 @@
+/*body {*/
+/*    background-color: #5a395a;*/
+/*    color: lightgray;*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+
+/*h1 {*/
+/*    text-align: center;*/
+/*}*/
+
+/*#tarefa_input {*/
+/*    display: inline-flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*#tarefa_input {*/
+/*    border: none;*/
+/*    border-bottom: 1px solid rebeccapurple;*/
+/*    background-color: transparent;*/
+/*    margin: 20px 0;*/
+/*    padding: 10px;*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*.btn {*/
+/*    background-color: rebeccapurple;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 10px 20px;*/
+/*    cursor: pointer;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.btn:active {*/
+/*    background-color: #5a395a;*/
+/*}*/
+
+/*table {*/
+/*    width: 100%;*/
+/*    color: rebeccapurple;*/
+/*}*/
+
+/*table th, td {*/
+/*    padding: 10px;*/
+/*}*/
+
+/*table tr:nth-child(even) {*/
+/*    background-color: white;*/
+/*    color: cadetblue;*/
+/*}*/
+
+body {
+    background-color: darkslategrey;
+    color: whitesmoke;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 3px dashed cadetblue;
+}
+
+#tarefa_input {
+    border: none;
+    border-bottom: 1px solid cadetblue;
+    background-color: transparent;
+    color: whitesmoke;
+    width: 100%;
+    flex-grow: 1;
+    margin: 20px 0;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn {
+    background-color: cadetblue;
+    color: whitesmoke;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:active {
+    background-color: rebeccapurple;
+}
+
+.btn:hover {
+    background-color: darkcyan;
+}
+
+table {
+    width: 100%;
+    background-color: rebeccapurple;
+}
+
+table th {
+    color: antiquewhite;
+}
+
+table th, td {
+    padding: 10px;
+    border-bottom: 3px solid cadetblue;
+}
+
+table tr.selected {
+    background-color: blueviolet;
+    color: black;
+}
