@@ -100,7 +100,7 @@ table {
 }
 
 table th {
-    color: antiquewhite;
+    color: lightsteelblue;
 }
 
 table th, td {
@@ -111,4 +111,8 @@ table th, td {
 table tr.selected {
     background-color: blueviolet;
     color: black;
+}
+
+table tr[draggable="true"] {
+    cursor: move;
 }
